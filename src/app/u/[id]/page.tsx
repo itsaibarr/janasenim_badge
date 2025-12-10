@@ -60,39 +60,41 @@ export default function UserPage() {
   }
 
   const loadingElement = (
-    <Card className="text-center animate-bounce-in">
-      <div className="text-6xl text-red-500 font-black animate-pulse drop-shadow-lg">ЗАГРУЗКА...</div>
+    <Card className="text-center animate-bounce-in px-4 py-6 sm:p-6">
+      <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-red-500 font-black animate-pulse drop-shadow-lg">ЗАГРУЗКА...</div>
       <div className="mt-4 flex justify-center">
-        <div className="w-8 h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-6 h-6 sm:w-8 sm:h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
       </div>
     </Card>
   )
 
   const errorElement = error && (
-    <Card className="bg-gradient-to-br from-red-50 to-red-100 border-red-500 animate-shake">
-      <div className="text-5xl text-red-500 font-black mb-4 drop-shadow-lg">⚠️ ОШИБКА</div>
-      <p className="text-xl mb-6 text-gray-800">{error}</p>
-      <Button variant="secondary" onClick={fetchComments}>
+    <Card className="bg-gradient-to-br from-red-50 to-red-100 border-red-500 animate-shake px-4 py-6 sm:p-6">
+      <div className="text-3xl sm:text-4xl md:text-5xl text-red-500 font-black mb-4 drop-shadow-lg">⚠️ ОШИБКА</div>
+      <p className="text-lg sm:text-xl mb-6 text-gray-800">{error}</p>
+      <Button variant="secondary" onClick={fetchComments} size="large">
         🔄 ПОПЫТАТЬСЯ СНОВА
       </Button>
     </Card>
   )
 
   const profileCard = (
-    <Card className="mb-8 relative">
-      <div className="absolute top-4 right-4 text-4xl animate-bounce-in">
+    <Card className="mb-8 relative px-4 py-6 sm:p-6">
+      <div className="absolute top-2 sm:top-4 right-2 sm:right-4 text-2xl sm:text-3xl md:text-4xl animate-bounce-in">
         👋
       </div>
       <div className="text-center relative">
-        <h1 className="text-8xl font-black leading-none tracking-tighter mb-4 text-black drop-shadow-lg">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none tracking-tighter mb-2 sm:mb-4 text-black drop-shadow-lg">
           УЧАСТНИК #{id}
         </h1>
-        <div className="flex justify-center my-6 animate-bounce-in animation-delay-300">
+        <div className="flex justify-center my-4 sm:my-6 animate-bounce-in animation-delay-300">
           <div className="p-4 bg-white rounded-lg shadow-[3px_3px_0px_0px_rgb(13,13,13)] border-4 border-gray-900">
-            <QRCode value={`https://janasenim-badge.vercel.app/u/${id}`} size={160} />
+            <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 flex items-center justify-center">
+              <QRCode value={`https://janasenim-badge.vercel.app/u/${id}`} size={120} />
+            </div>
           </div>
         </div>
-        <p className="text-3xl font-black mt-4 text-orange-500 drop-shadow-lg bg-white/10 px-4 py-2 rounded-lg border-2 border-orange-500">
+        <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black mt-4 text-orange-500 drop-shadow-lg bg-white/10 px-4 py-2 rounded-lg border-2 border-orange-500">
           📱 Отсканируйте QR-код, чтобы поделиться этой страницей!
         </p>
       </div>
@@ -100,22 +102,22 @@ export default function UserPage() {
   )
 
   const commentsSection = (
-    <Card>
-      <div className="flex items-center gap-4 mb-6">
-        <h2 className="text-6xl font-black">💬 КОММЕНТАРИИ</h2>
-        <span className="text-2xl font-bold text-orange-500 bg-orange-100 px-3 py-1 rounded shadow-md">
+    <Card className="px-4 py-6 sm:p-6">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4 sm:mb-6">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black">💬 КОММЕНТАРИИ</h2>
+        <span className="text-lg sm:text-xl md:text-2xl font-bold text-orange-500 bg-orange-100 px-3 py-1 rounded shadow-md self-start sm:self-auto">
           {comments.length}
         </span>
       </div>
 
-      <div className="mb-6" />
+      <div className="mb-4 sm:mb-6" />
 
-      <div className="grid gap-6">
+      <div className="grid gap-4 sm:gap-6">
         {comments.length === 0 ? (
-          <div className="text-center py-16 animate-slide-in bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl border-4 border-orange-500">
-            <div className="text-8xl mb-6 animate-bounce">😴</div>
-            <div className="text-6xl font-black mb-6 text-orange-700">НЕТ КОММЕНТАРИЕВ</div>
-            <div className="text-3xl text-white bg-gradient-to-r from-orange-500 to-red-500 px-8 py-4 rounded-full shadow-[4px_4px_0px_0px_rgb(13,13,13)] border-4 border-white mx-auto max-w-lg">
+          <div className="text-center py-8 sm:py-16 animate-slide-in bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl border-4 border-orange-500 px-4">
+            <div className="text-6xl sm:text-7xl md:text-8xl mb-4 sm:mb-6 animate-bounce">😴</div>
+            <div className="text-4xl sm:text-5xl md:text-6xl font-black mb-4 sm:mb-6 text-orange-700">НЕТ КОММЕНТАРИЕВ</div>
+            <div className="text-xl sm:text-2xl md:text-3xl text-white bg-gradient-to-r from-orange-500 to-red-500 px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-[4px_4px_0px_0px_rgb(13,13,13)] border-4 border-white mx-auto max-w-lg">
               ✨ Будьте первым, кто оставит комментарий!
             </div>
           </div>
@@ -125,19 +127,19 @@ export default function UserPage() {
               key={c.id}
               borderWidth="bold"
               shadow="sharp"
-              className={`p-6 animate-slide-in relative overflow-hidden`}
+              className={`p-4 sm:p-6 animate-slide-in relative overflow-hidden`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="absolute top-2 right-2 text-2xl opacity-20">
+              <div className="absolute top-2 right-2 text-lg sm:text-xl md:text-2xl opacity-20">
                 💭
               </div>
-              <div className="flex justify-between items-start gap-4">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-4">
                 <div className="flex-1">
-                  <p className="text-xl leading-relaxed break-words font-medium text-gray-800">
+                  <p className="text-lg sm:text-xl leading-relaxed break-words font-medium text-gray-800">
                     {c.comment}
                   </p>
                 </div>
-                <div className="text-sm text-orange-600 font-bold min-w-fit shrink-0 bg-orange-50 px-3 py-1 rounded-full border-2 border-orange-300">
+                <div className="text-xs sm:text-sm text-orange-600 font-bold min-w-fit shrink-0 bg-orange-50 px-2 sm:px-3 py-1 rounded-full border-2 border-orange-300 self-start sm:self-auto">
                   📅 {new Date(c.created_at).toLocaleString('ru-RU')}
                 </div>
               </div>
@@ -146,26 +148,27 @@ export default function UserPage() {
         )}
       </div>
 
-      <div className="mb-8" />
+      <div className="mb-6 sm:mb-8" />
 
-      <div className="border-t-8 border-gray-900 pt-8 bg-gradient-to-r from-red-50/50 to-orange-50/50 p-6 -m-6 mt-0 rounded-lg">
-        <h3 className="text-4xl font-black mb-6 text-center text-red-700">
+      <div className="border-t-8 border-gray-900 pt-6 sm:pt-8 bg-gradient-to-r from-red-50/50 to-orange-50/50 p-4 sm:p-6 -m-4 sm:-m-6 mt-0 rounded-lg">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 sm:mb-6 text-center text-red-700">
           ✍️ ОСТАВИТЬ КОММЕНТАРИЙ
         </h3>
         <textarea
-          className="w-full bg-white border-4 border-gray-900 shadow-[3px_3px_0px_0px_rgb(13,13,13)] p-4 font-mono text-xl resize-vertical focus:border-red-500 focus:shadow-[5px_5px_0px_0px_rgb(13,13,13),0_0_0_3px_rgb(255,107,53,0.3)] focus:outline-none mb-4 transition-all duration-200"
+          className="w-full bg-white border-4 border-gray-900 shadow-[3px_3px_0px_0px_rgb(13,13,13)] p-3 sm:p-4 font-mono text-lg sm:text-xl resize-vertical focus:border-red-500 focus:shadow-[5px_5px_0px_0px_rgb(13,13,13),0_0_0_3px_rgb(255,107,53,0.3)] focus:outline-none mb-4 transition-all duration-200"
           rows={4}
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
           placeholder="💭 Напишите свой комментарий здесь..."
           maxLength={500}
         />
-        <div className="flex gap-4 flex-wrap justify-center">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
           <Button
             variant="primary"
             onClick={postComment}
             disabled={!newComment.trim()}
-            className="text-xl px-8 py-3"
+            className="text-lg sm:text-xl px-6 sm:px-8 py-3"
+            size="large"
           >
             🚀 ОТПРАВИТЬ
           </Button>
@@ -173,13 +176,14 @@ export default function UserPage() {
             variant="secondary"
             onClick={() => setNewComment('')}
             disabled={!newComment.trim()}
-            className="text-xl px-8 py-3"
+            className="text-lg sm:text-xl px-6 sm:px-8 py-3"
+            size="large"
           >
             🗑️ ОЧИСТИТЬ
           </Button>
         </div>
         <div className="text-center mt-4">
-          <span className={`text-lg font-bold px-3 py-1 rounded-full ${
+          <span className={`text-sm sm:text-lg font-bold px-3 py-1 rounded-full ${
             newComment.length > 450 ? 'bg-red-100 text-red-700 border-2 border-red-500' :
             newComment.length > 400 ? 'bg-orange-100 text-orange-700 border-2 border-orange-500' :
             'bg-gray-100 text-gray-700 border-2 border-gray-500'
@@ -200,23 +204,23 @@ export default function UserPage() {
   return (
     <div className="min-h-screen bg-gray-900 p-4">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-[2fr_1fr] gap-4 sm:gap-6">
           <div>
             {profileCard}
             {commentsSection}
           </div>
           <div>
             {/* Sidebar space for future features */}
-            <Card>
-              <h3 className="text-4xl font-black mb-6 text-gray-900">📊 СТАТИСТИКА</h3>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center bg-gradient-to-r from-red-50 to-orange-50 p-4 rounded-lg border-2 border-red-300">
-                  <span className="text-xl font-bold text-red-700">Комментариев:</span>
-                  <span className="text-5xl font-black text-red-600 drop-shadow-lg">{comments.length}</span>
+            <Card className="px-4 py-6 sm:p-6">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 sm:mb-6 text-gray-900">📊 СТАТИСТИКА</h3>
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center bg-gradient-to-r from-red-50 to-orange-50 p-3 sm:p-4 rounded-lg border-2 border-red-300 gap-2 sm:gap-4">
+                  <span className="text-lg sm:text-xl font-bold text-red-700">Комментариев:</span>
+                  <span className="text-3xl sm:text-4xl md:text-5xl font-black text-red-600 drop-shadow-lg self-end sm:self-auto">{comments.length}</span>
                 </div>
-                <div className="flex justify-between items-center bg-gradient-to-r from-orange-50 to-yellow-50 p-4 rounded-lg border-2 border-orange-300">
-                  <span className="text-xl font-bold text-orange-700">Пользователь ID:</span>
-                  <span className="text-5xl font-black text-orange-600 drop-shadow-lg">#{id}</span>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center bg-gradient-to-r from-orange-50 to-yellow-50 p-3 sm:p-4 rounded-lg border-2 border-orange-300 gap-2 sm:gap-4">
+                  <span className="text-lg sm:text-xl font-bold text-orange-700">Пользователь ID:</span>
+                  <span className="text-3xl sm:text-4xl md:text-5xl font-black text-orange-600 drop-shadow-lg self-end sm:self-auto">#{id}</span>
                 </div>
               </div>
             </Card>
