@@ -1,26 +1,122 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Enhanced Neo-Brutalism Color Palette */
+  --primary-red: #FF1936; /* More vibrant red */
+  --accent-orange: #FF6B35; /* Orange accent for highlights */
+  --secondary-black: #0D0D0D; /* Slightly lighter black for better contrast */
+  --white: #FFF;
+  --gray-100: #F8F8F8;
+  --gray-200: #F0F0F0;
+  --gray-300: #E0E0E0;
+  --gray-600: #666666;
+  --gray-800: #2A2A2A;
 }
 
+/* Enhanced Neo-Brutalism Theme */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary-red: var(--primary-red);
+  --color-accent-orange: var(--accent-orange);
+  --color-secondary-black: var(--secondary-black);
+  --color-white: var(--white);
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-gray-600: var(--gray-600);
+  --color-gray-800: var(--gray-800);
+  --font-sans: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+  /* Enhanced animations for better UX */
+  --animate-bounce-in: bounce-in 0.5s ease-out;
+  --animate-slide-in: slide-in 0.3s ease-out;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Base body reset */
+body {
+  background: var(--secondary-black);
+  color: var(--secondary-black);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(255, 25, 54, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.03) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Custom Animations */
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes slide-in {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow:
+      0 0 5px var(--primary-red),
+      0 0 10px var(--primary-red),
+      0 0 15px var(--primary-red);
+  }
+  50% {
+    box-shadow:
+      0 0 10px var(--primary-red),
+      0 0 20px var(--primary-red),
+      0 0 30px var(--primary-red);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Utility classes */
+.animate-bounce-in { animation: bounce-in 0.5s ease-out; }
+.animate-slide-in { animation: slide-in 0.3s ease-out; }
+.animate-glow { animation: glow 2s ease-in-out infinite; }
+.animate-shake { animation: shake 0.5s ease-in-out; }
+
+/* Enhanced focus styles */
+.focus-enhanced:focus {
+  outline: 3px solid var(--primary-red) !important;
+  outline-offset: 2px;
+  box-shadow:
+    0 0 0 3px rgba(255, 25, 54, 0.3),
+    var(--shadow-bold) !important;
+}
+
+/* Smooth transitions */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
